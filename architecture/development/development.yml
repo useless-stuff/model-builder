@@ -1,0 +1,59 @@
+version: '3.7'
+
+services:
+
+  # React built within this container is the "production like" version meant to be used as a testing tool for the BE
+  frontend:
+    container_name: model-builder-frontend
+    hostname: frontend
+    build:
+      context: ../../frontend
+      target: service
+      dockerfile: docker/frontend.dockerfile
+      args:
+        BUILD_VERSION: latest
+        BUILD_DATE: developent
+        BUILD_VCS_REF: developent
+        IMAGE_NAME: model-builder/frontend
+    env_file:
+      - ./.env
+    ports:
+      - 3001:80
+    tty: true
+
+  # API: Monolithic backend application
+  backend:
+    container_name: model-builder-backend
+    hostname: backend
+    networks:
+      - model-builder
+    volumes:
+      - ../../backend:/service
+    build:
+      context: ../../backend
+      target: development
+      dockerfile: docker/backend.dockerfile
+    env_file:
+      - ./.env
+    entrypoint: ["yarn", "--cwd", "/service", "app:api:dev"]
+    ports:
+      - 3000:3000
+    tty: true
+    depends_on:
+      - mongo
+
+  # MongoDB service
+  mongo:
+    image: mongo
+    container_name: model-builder-mongodb
+    hostname: mongo
+    command: --serviceExecutor adaptive
+    volumes:
+      - ./volumes/mongo:/data/db
+    networks:
+      - model-builder
+    ports:
+      - 27017:27017
+
+networks:
+  model-builder:
