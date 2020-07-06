@@ -1,5 +1,7 @@
+# Local files
 .env
 .idea
+.DS_Store
 http-client.private.env.json
 *.test.json
 
@@ -9,4 +11,12 @@ architecture/development/volumes/*
 
 # Node
 node_modules
+build
+dist
+
+# Misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
 
