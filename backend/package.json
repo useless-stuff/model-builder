@@ -1,0 +1,34 @@
+{
+    "name": "model-builder",
+    "version": "1.0.0",
+    "description": "Build models from UI",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "app:api:dev": "ts-node-dev ./src/server.ts --transpile-only",
+        "app:api:prod": "node ./src/server.js"
+    },
+    "dependencies": {
+        "@hapi/hapi": "^19.1.1",
+        "axios": "^0.19.2",
+        "bcryptjs": "^2.4.3",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb": "^3.5.9",
+        "uuid": "^8.2.0"
+    },
+    "devDependencies": {
+        "@types/bcryptjs": "^2.4.2",
+        "@types/jsonwebtoken": "^8.5.0",
+        "@types/mongodb": "^3.5.25",
+        "@types/node": "^14.0.14",
+        "@types/uuid": "^8.0.0",
+        "@typescript-eslint/eslint-plugin": "^3.5.0",
+        "@typescript-eslint/parser": "^3.5.0",
+        "eslint": "^7.4.0",
+        "prettier": "^2.0.5",
+        "pretty-quick": "^2.0.1",
+        "ts-node": "^8.10.2",
+        "ts-node-dev": "^1.0.0-pre.50",
+        "typescript": "^3.9.6"
+    }
+}

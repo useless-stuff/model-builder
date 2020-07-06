@@ -1,0 +1,16 @@
+# Create User
+POST {{host}}/users
+Content-Type: application/json
+
+< ./create.test.json
+
+###
+
+# Get user
+GET {{host}}/users
+Authorization: Bearer {{activeJwt}}
+Content-Type: application/json
+
+< ./create.test.json
+
+###

@@ -1,0 +1,7 @@
+# Create Auth
+POST {{host}}/auth
+Content-Type: application/json
+
+< ./create.test.json
+
+###
