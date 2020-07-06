@@ -1,0 +1,12 @@
+.env
+.idea
+http-client.private.env.json
+*.test.json
+
+# Development volumes
+architecture/development/volumes/*
+!architecture/development/volumes/.gitkeep
+
+# Node
+node_modules
+
